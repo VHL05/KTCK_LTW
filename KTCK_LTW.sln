@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTCK_LTW", "KTCK_LTW\KTCK_LTW.csproj", "{74610643-95C2-4ACF-B307-471BD037243D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74610643-95C2-4ACF-B307-471BD037243D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74610643-95C2-4ACF-B307-471BD037243D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74610643-95C2-4ACF-B307-471BD037243D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74610643-95C2-4ACF-B307-471BD037243D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {924EE578-F6A1-4BCB-A81E-219D1BA7510E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,275 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <style>
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Arial', sans-serif;
+ }
+
+ body {
+     color: #fff;
+     background-color: #111;
+     line-height: 1.6;
+     display: flex; /* Sử dụng Flexbox cho body */
+     flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+     min-height: 100vh; /* Đảm bảo body có chiều cao tối thiểu bằng viewport height */
+ }
+
+ /* Container - Giới hạn chiều rộng trang */
+ .container {
+     width: 90%;
+     max-width: 1200px;
+     margin: 0 auto;
+ }
+
+ /* Header */
+ header {
+     background-color: #000;
+     padding: 20px 0;
+     position: fixed;
+     width: 100%;
+     top: 0;
+     z-index: 1000;
+ }
+
+ header .container {
+     display: flex;
+     justify-content: space-between; /* Tách logo và menu về hai bên */
+     align-items: center;
+ }
+
+ header .logo {
+     height: 40px;
+     flex: 0 0 auto; /* Đảm bảo logo không bị co giãn */
+ }
+
+ header nav {
+     flex: 1; /* Để menu điều hướng chiếm không gian còn lại */
+ }
+
+ header nav ul {
+     display: flex;
+     justify-content: flex-end; /* Đẩy menu về bên phải */
+     list-style: none;
+ }
+
+ header nav ul li a {
+     color: #fff;
+     text-decoration: none;
+     font-size: 16px;
+     padding: 10px 20px;
+ }
+
+ header nav ul li a:hover {
+     color: #ff0000;
+ }
+
+ /* Form đăng nhập */
+ .container-login {
+     width: 33.33%; /* Đặt chiều rộng của form đăng nhập chiếm 1/3 chiều rộng trang */
+     max-width: 400px; /* Giới hạn chiều rộng tối đa để tránh quá rộng */
+     margin: 80px auto; /* Đẩy xuống dưới header */
+     padding: 20px;
+     background-color: #222;
+     border-radius: 8px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+
+ h2 {
+     text-align: center;
+     margin-bottom: 20px;
+     color: #fff;
+ }
+
+ .form-group {
+     margin-bottom: 15px;
+ }
+
+ .form-group label {
+     display: block;
+     margin-bottom: 5px;
+     color: #fff;
+ }
+
+ .form-group input {
+     width: 100%;
+     padding: 10px;
+     border: 1px solid #ddd;
+     border-radius: 5px;
+ }
+
+ .btn {
+     display: block;
+     width: 100%;
+     padding: 10px;
+     background-color: #ff0000;
+     color: #fff;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 16px;
+     transition: background-color 0.3s;
+ }
+
+ .btn:hover {
+     background-color: #cc0000;
+ }
+
+ .toggle-link {
+     text-align: center;
+     margin-top: 10px;
+ }
+
+ .toggle-link a {
+     color: #ff0000;
+     text-decoration: none;
+ }
+
+ .toggle-link a:hover {
+     text-decoration: underline;
+ }
+
+        /* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 50px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.footer-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+    line-height: 1.6;
+    font-size: 0.9em;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <!-- Menu -->
+            <nav>
+                <ul>
+                    <li><a href="~/Home/test">Trang chủ</a></li>
+                    <li><a href="~/Product/ProductList">Mẫu xe</a></li>
+                    <li><a href="~/Cart/ShoppingCart">Giỏ hàng</a></li>
+                    <li><a href="~/Home/Contact">Liên hệ</a></li>
+                    <li><a href="~/Login/LoginPage">Tài khoản</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container-login">
+        <h2>Đăng Ký</h2>
+        <form action="login" method="POST">
+            <div class="form-group">
+                <label for="registerUsername">Tên tài khoản</label>
+                <input type="text" id="registerUsername" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPhone">Số điện thoại</label>
+                <input type="tel" id="registerPhone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Mật khẩu</label>
+                <input type="password" id="loginPassword" name="password" required>
+            </div>
+            <button type="submit" class="btn">Đăng Ký</button>
+            <div class="toggle-link">Đã có tài khoản? <a href="~/Login/LoginPage">Đăng Nhập</a></div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Địa chỉ và Hotline -->
+            <div class="footer-section">
+                <h3>Thông tin liên hệ</h3>
+                <p><strong>Địa chỉ:</strong> 365 Đường Nguyễn Thị Minh Khai, Quận 1, TP.HCM</p>
+                <p><strong>Hotline:</strong> 0909 123 456</p>
+            </div>
+
+            <!-- Giờ làm việc -->
+            <div class="footer-section">
+                <h3>Giờ làm việc</h3>
+                <p>Thứ 2 - Thứ 6: 8:00 - 18:00</p>
+                <p>Thứ 7: 9:00 - 15:00</p>
+                <p>Chủ nhật: Nghỉ</p>
+            </div>
+
+            <!-- Kết nối mạng xã hội -->
+            <div class="footer-section">
+                <h3>Kết nối với chúng tôi</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

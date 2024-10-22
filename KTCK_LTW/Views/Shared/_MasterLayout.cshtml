@@ -1,0 +1,541 @@
+﻿<!DOCTYPE html>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    color: #fff;
+    background-color: #111;
+    line-height: 1.6;
+    display: flex; /* Sử dụng Flexbox cho body */
+    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+    min-height: 100vh; /* Đảm bảo body có chiều cao tối thiểu bằng viewport height */
+}
+
+/* Container - Giới hạn chiều rộng trang */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #000;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between; /* Tách logo và menu về hai bên */
+    align-items: center;
+}
+
+header .logo {
+    height: 40px;
+    flex: 0 0 auto; /* Đảm bảo logo không bị co giãn */
+}
+
+header nav {
+    flex: 1; /* Để menu điều hướng chiếm không gian còn lại */
+}
+
+header nav ul {
+    display: flex;
+    justify-content: flex-end; /* Đẩy menu về bên phải */
+    list-style: none;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+header nav ul li a:hover {
+    color: #ff0000;
+}
+
+/* Hero Section */
+    .hero {
+        background-image: url('../../content/images/bgr.jpg');
+        background-size: cover; /* Đảm bảo ảnh bao phủ toàn bộ khu vực */
+        background-position: center; /* Căn giữa ảnh nền */
+        background-attachment: fixed; /* Ảnh nền cố định khi cuộn */
+        height: 100vh; /* Chiều cao 100% màn hình */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        color: #fff;
+        text-align: center;
+    }
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #cc0000;
+}
+
+/* Featured Section */
+.featured {
+    padding: 50px 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.featured h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #333;
+    font-weight: bold;
+}
+/* Header phần tiêu đề */
+.featured-header h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Container cho các mẫu xe */
+.cars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tạo 3 cột */
+    gap: 30px; /* Khoảng cách giữa các mẫu xe */
+    justify-items: center;
+    padding: 0 50px;
+}
+
+/* Phần từng mẫu xe */
+.car {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 100%; /* Mỗi mẫu xe chiếm 100% chiều rộng trong grid */
+    max-width: 350px;
+}
+
+.car img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.car h3 {
+    font-size: 1.5em;
+    color: #000;
+    margin: 20px 0;
+}
+
+.car p {
+    color: #666;
+    font-size: 1em;
+    padding: 0 20px 20px;
+    line-height: 1.6;
+}
+
+/* Hiệu ứng khi di chuột lên các mẫu xe */
+.featured .car:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.featured .car:hover img {
+    transform: scale(1.05); /* Phóng to ảnh khi hover */
+}
+/* Store Utilities Section */
+.mystore-utilities {
+    padding: 50px 0;
+    background-color: #f4f4f4; /* Nền màu cho toàn bộ khối */
+    text-align: center;
+}
+
+.utilities-block {
+    background-color: #fff; /* Nền trắng cho khối lớn */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.utilities-header h2 {
+    font-size: 2.5em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* Khối tiện ích chung */
+.utilities-content {
+    display: flex;
+    justify-content: space-between; /* Để các tiện ích nằm trong 1 hàng */
+    gap: 30px; /* Khoảng cách giữa các tiện ích */
+}
+
+/* Khối từng tiện ích nhỏ */
+.utility-item {
+    width: 30%; /* Mỗi tiện ích chiếm khoảng 1/3 chiều rộng */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.utility-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.utility-item p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.utility-item .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.utility-item .btn:hover {
+    background-color: #cc0000;
+}
+/* Thêm vào giỏ hàng */
+button {
+    padding: 12px 25px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 25px; /* Tạo các góc bo tròn */
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ */
+    margin-top: 10px;
+}
+
+/* Hiệu ứng khi di chuột lên nút */
+button:hover {
+    background-color: #cc0000; /* Màu nền khi hover */
+    transform: translateY(-3px); /* Nâng nút lên khi hover */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Bóng đổ đậm hơn khi hover */
+}
+
+/* Hiệu ứng khi nhấn nút */
+button:active {
+    transform: translateY(1px); /* Khi nhấn, nút sẽ di chuyển nhẹ xuống */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); /* Bóng đổ nhẹ hơn khi nhấn */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 50px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.footer-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+    line-height: 1.6;
+    font-size: 0.9em;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+}      
+</style>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <!-- Menu -->
+            <nav>
+                <ul>
+                    <li><a href="~/Home/test">Trang chủ</a></li>
+                    <li><a href="~/Product/ProductList">Mẫu xe</a>
+                        @*<ul>
+                            <li><a href="~/Product/Toyota"></a></li>
+                            <li><a href="~/Product/Honda"></a></li>
+                            <li><a href="~/Product/Ford"></a></li>
+                            <li><a href="~/Product/BMW"></a></li>
+                            <li><a href="~/Product/Mercedes"></a></li>
+                            <li><a href="~/Product/Hyundai"></a></li>
+                        </ul>*@
+                    </li>
+                    <li><a href="~/Cart/ShoppingCart">Giỏ hàng</a></li>
+                    <li><a href="~/Home/Contact">Liên hệ</a></li>
+                    <li><a href="~/Login/LoginPage">Tài khoản</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Phần Banner chính (Hero Section) -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Khám Phá Những Mẫu Xe Vượt Trội</h1>
+            <p>Trải nghiệm sự hoàn mĩ.</p>
+            <a href="~/Product/ProductList" class="btn">Tìm hiểu thêm</a>
+        </div>
+    </section>
+    <!-- Phần Sản Phẩm Nổi Bật (Featured Section) -->
+    <section class="featured">
+        <div class="featured-header">
+            <h2>Các Mẫu Xe Nổi Bật</h2>
+        </div>
+        <div class="cars">
+            <!-- Mẫu xe 1 -->
+            <div class="car">
+                <img src="#" alt="" />
+                <h3></h3>
+                <p></p>
+                <p>Giá:  VND</p>
+                <button onclick="addToCart(10, 'name', price)">Thêm vào giỏ hàng</button>
+            </div>
+
+            <!-- Mẫu xe 2 -->
+            <div class="car">
+                <img src="#" alt="" />
+                <h3></h3>
+                <p></p>
+                <p>Giá:  VND</p>
+                <button onclick="addToCart(10, 'name', price)">Thêm vào giỏ hàng</button>
+            </div>
+
+            <!-- Mẫu xe 3 -->
+            <div class="car">
+                <img src="#" alt="" />
+                <h3></h3>
+                <p></p>
+                <p>Giá:  VND</p>
+                <button onclick="addToCart(10, 'name', price)">Thêm vào giỏ hàng</button>
+            </div>
+
+            <!-- Mẫu xe 4 -->
+            <div class="car">
+                <img src="#" alt="" />
+                <h3></h3>
+                <p></p>
+                <p>Giá:  VND</p>
+                <button onclick="addToCart(10, 'name', price)">Thêm vào giỏ hàng</button>
+            </div>
+
+            <!-- Mẫu xe 5 -->
+            <div class="car">
+                <img src="#" alt="" />
+                <h3></h3>
+                <p></p>
+                <p>Giá:  VND</p>
+                <button onclick="addToCart(10, 'name', price)">Thêm vào giỏ hàng</button>
+            </div>
+
+            <!-- Mẫu xe 6 -->
+            <div class="car">
+                <img src="#" alt="" />
+                <h3></h3>
+                <p></p>
+                <p>Giá:  VND</p>
+                <button onclick="addToCart(10, 'name', price)">Thêm vào giỏ hàng</button>
+            </div>
+
+            <!-- Mẫu xe 7 -->
+            <div class="car">
+                <img src="#" alt="" />
+                <h3></h3>
+                <p></p>
+                <p>Giá:  VND</p>
+                <button onclick="addToCart(10, 'name', price)">Thêm vào giỏ hàng</button>
+            </div>
+
+            <!-- Mẫu xe 8 -->
+            <div class="car">
+                <img src="#" alt="" />
+                <h3></h3>
+                <p></p>
+                <p>Giá:  VND</p>
+                <button onclick="addToCart(10, 'name', price)">Thêm vào giỏ hàng</button>
+            </div>
+
+            <!-- Mẫu xe 9 -->
+            <div class="car">
+                <img src="#" alt="" />
+                <h3></h3>
+                <p></p>
+                <p>Giá:  VND</p>
+                <button onclick="addToCart(10, 'name', price)">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+    </section>
+    <!-- Tiện ích  -->
+    <section class="mystore-utilities">
+        <div class="container">
+            <!-- Tiện ích Section -->
+            <div class="utilities-block">
+                <div class="utilities-header">
+                    <h2>Tiện ích cửa hàng</h2>
+                </div>
+                <div class="utilities-content">
+                    <div class="utility-item">
+                        <h3>Dịch vụ bảo dưỡng </h3>
+                        <p>Dịch vụ bảo dưỡng chính hãng đảm bảo chiếc xe của bạn luôn vận hành ổn định và an toàn.</p>
+                        <a href="#" class="btn">Đặt lịch bảo dưỡng</a>
+                    </div>
+                    <div class="utility-item">
+                        <h3>Dịch vụ lái thử </h3>
+                        <p>Dịch vụ lái thử giúp khách hàng trải nghiệm cảm giác thoái mái trước khi mua xe.</p>
+                        <a href="#" class="btn">Đặt lịch lái thử</a>
+                    </div>
+                    <div class="utility-item">
+                        <h3>Đăng kí nhận ưu đãi</h3>
+                        <p>Hàng nghìn ưu đãi hấp dẫn và các mẫu xe hiện đại đang chào đón bạn. Đăng kí ngay nào!</p>
+                        <a href="#" class="btn">Đăng kí ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Địa chỉ và Hotline -->
+            <div class="footer-section">
+                <h3>Thông tin liên hệ</h3>
+                <p><strong>Địa chỉ:</strong> 365 Đường Nguyễn Thị Minh Khai, Quận 1, TP.HCM</p>
+                <p><strong>Hotline:</strong> 0358 327 356</p>
+            </div>
+
+            <!-- Giờ làm việc -->
+            <div class="footer-section">
+                <h3>Giờ làm việc</h3>
+                <p>Thứ 2 - Thứ 6: 8:00 - 18:00</p>
+                <p>Thứ 7: 9:00 - 15:00</p>
+                <p>Chủ nhật: Nghỉ</p>
+            </div>
+
+            <!-- Kết nối mạng xã hội -->
+            <div class="footer-section">
+                <h3>Kết nối với chúng tôi</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    @RenderBody()
+    <script language="Javascript">
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Hàm thêm sản phẩm vào giỏ hàng
+        function addToCart(productId, productName, productPrice) {
+            const existingItem = cartItems.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1; // Tăng số lượng nếu sản phẩm đã có trong giỏ
+            } else {
+                cartItems.push({ id: productId, name: productName, price: productPrice, quantity: 1 }); // Thêm mới sản phẩm
+            }
+
+            localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Lưu giỏ hàng vào localStorage
+            alert(`${productName} đã được thêm vào giỏ hàng!`); // Thông báo sản phẩm đã được thêm
+        }
+    </script>
+</body>
+</html>

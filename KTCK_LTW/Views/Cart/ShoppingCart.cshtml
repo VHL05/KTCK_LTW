@@ -1,0 +1,276 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng</title>
+    <style>
+
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    color: #fff;
+    background-color: #111;
+    line-height: 1.6;
+    display: flex; /* Sử dụng Flexbox cho body */
+    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+    min-height: 100vh; /* Đảm bảo body có chiều cao tối thiểu bằng viewport height */
+}
+
+/* Container - Giới hạn chiều rộng trang */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #000;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between; /* Tách logo và menu về hai bên */
+    align-items: center;
+}
+
+header .logo {
+    height: 40px;
+    flex: 0 0 auto; /* Đảm bảo logo không bị co giãn */
+}
+
+header nav {
+    flex: 1; /* Để menu điều hướng chiếm không gian còn lại */
+}
+
+header nav ul {
+    display: flex;
+    justify-content: flex-end; /* Đẩy menu về bên phải */
+    list-style: none;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+header nav ul li a:hover {
+    color: #ff0000;
+}
+
+        /* Giỏ hàng */
+        .cart {
+            margin-top: 80px; /* Cách phần header */
+            padding: 20px;
+            background-color: #222;
+            flex: 1; /* Để đảm bảo phần này chiếm không gian còn lại */
+        }
+
+        .cart table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart th, .cart td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        .total {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        #checkoutButton {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #checkoutButton:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 50px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+            line-height: 1.6;
+            font-size: 0.9em;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 5px;
+        }
+
+        .footer-section ul li a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ensure footer is at the bottom */
+        footer {
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="~/Home/test">Trang chủ</a></li>
+                    <li><a href="~/Product/ProductList">Mẫu xe</a></li>
+                    <li><a href="~/Cart/ShoppingCart">Giỏ hàng</a></li>
+                    <li><a href="~/Home/Contact">Liên hệ</a></li>
+                    <li><a href="~/Login/LoginPage">Tài khoản</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cart">
+        <h2>Các sản phẩm trong giỏ hàng</h2>
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá</th>
+                    <th>Số Lượng</th>
+                    <th>Tổng</th>
+                    <th>Thao tác đơn hàng</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="total">
+            <h3>Tổng Giá: <span id="totalPrice">0</span> VND</h3>
+        </div>
+        <button id="checkoutButton" onclick="checkout()">Thanh toán</button>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Thông tin liên hệ</h3>
+                <p><strong>Địa chỉ:</strong> 365 Đường Nguyễn Thị Minh Khai, Quận 1, TP.HCM</p>
+                <p><strong>Hotline:</strong> 0909 123 456</p>
+            </div>
+            <div class="footer-section">
+                <h3>Giờ làm việc</h3>
+                <p>Thứ 2 - Thứ 6: 8:00 - 18:00</p>
+                <p>Thứ 7: 9:00 - 15:00</p>
+                <p>Chủ nhật: Nghỉ</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kết nối với chúng tôi</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script language="Javascript">
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Hiển thị giỏ hàng
+        function displayCart() {
+            const cartTableBody = document.querySelector('#cartTable tbody');
+            cartTableBody.innerHTML = ''; // Xóa nội dung cũ
+            let total = 0;
+
+            cartItems.forEach((item, index) => {
+                const row = document.createElement('tr');
+                const totalPrice = item.price * item.quantity;
+                total += totalPrice;
+
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.price} VND</td>
+                    <td>${item.quantity}</td>
+                    <td>${totalPrice} VND</td>
+                    <td><button onclick="removeFromCart(${index})">Xóa</button></td>
+                `;
+                cartTableBody.appendChild(row);
+            });
+
+            document.getElementById('totalPrice').textContent = total;
+        }
+
+        // Hàm xóa sản phẩm khỏi giỏ hàng
+        function removeFromCart(index) {
+            console.log('Removing item at index:', index); // Debug log
+            cartItems.splice(index, 1); // Xóa phần tử dựa trên index
+            localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Cập nhật lại localStorage
+            displayCart(); // Cập nhật lại giao diện sau khi xóa
+        }
+
+        // Hàm thanh toán
+        function checkout() {
+            alert("Vui lòng liên hệ trực tiếp cửa hàng qua số điện thoại để thanh toán nhanh nhất!");
+        }
+
+        // Hiển thị giỏ hàng khi tải trang
+        displayCart();
+    </script>
+</body>
+</html>
